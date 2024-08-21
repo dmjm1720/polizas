@@ -15,21 +15,6 @@ public class FiltroUrl implements PhaseListener {
     private static final long serialVersionUID = 1L;
 
 
-
-    
-    
-//     @Override
-//    public void afterPhase(PhaseEvent event) {
-//        FacesContext facesContext = event.getFacesContext();
-//        String currentPage= facesContext.getViewRoot().getViewId();
-//        boolean isPageLogin= currentPage.lastIndexOf("/index.xhtml") > -1;
-//        HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
-//        Object nombre = session.getAttribute("nombre");
-//        if (!isPageLogin && nombre==null) {
-//            NavigationHandler nHandler = facesContext.getApplication().getNavigationHandler();
-//            nHandler.handleNavigation(facesContext, null, "/index.xhtml");
-//        } 
-//    }
     @Override
     public void afterPhase(PhaseEvent event) {
         FacesContext facesContext = event.getFacesContext();
@@ -38,7 +23,7 @@ public class FiltroUrl implements PhaseListener {
 
         HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
         if (session == null) {
-            // If session is null, the user is not logged in
+
             if (!isPageLogin) {
                 NavigationHandler nHandler = facesContext.getApplication().getNavigationHandler();
                 nHandler.handleNavigation(facesContext, null, "/index.xhtml");

@@ -6,7 +6,7 @@
         <property name="hibernate.connection.url">jdbc:sqlserver://localhost;databaseName=polizas</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password">Pr4xi5A5a*</property>
-<!--        <property name="hibernate.connection.url">jdbc:sqlserver://192.168.0.11;databaseName=polizas</property>
+        <!--        <property name="hibernate.connection.url">jdbc:sqlserver://192.168.0.11;databaseName=polizas</property>
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password">S1st3m4S*Duch3</property>-->
         <property name="hibernate.current_session_context_class">thread</property>
@@ -14,5 +14,7 @@
         <property name="hibernate.show_sql">true</property>
         <mapping class="com.dmjsistemas.model.Usuario"/>
         <mapping class="com.dmjsistemas.model.Rutas"/>
+        <mapping class="com.dmjsistemas.model.EncabezadosRecepcion"/>
+        <mapping class="com.dmjsistemas.model.PartidasRecepcion"/>
     </session-factory>
 </hibernate-configuration>

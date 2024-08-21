@@ -2,7 +2,9 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
 
 <hibernate-reverse-engineering>
-  <schema-selection match-catalog="polizas" match-schema="dbo"/>
-  <table-filter match-name="USUARIO"/>
-  <table-filter match-name="RUTAS"/>
+    <schema-selection match-catalog="polizas" match-schema="dbo"/>
+    <table-filter match-name="USUARIO"/>
+    <table-filter match-name="RUTAS"/>
+    <table-filter match-name="ENCABEZADOS_RECEPCION"/>
+    <table-filter match-name="PARTIDAS_RECEPCION"/>
 </hibernate-reverse-engineering>

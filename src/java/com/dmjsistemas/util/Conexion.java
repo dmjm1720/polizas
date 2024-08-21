@@ -8,6 +8,7 @@ public class Conexion {
 
     private Connection cnSae;
     private Connection cnCoi;
+    private Connection cnPol;
 
     public Connection getCnSae() {
         return cnSae;
@@ -24,6 +25,16 @@ public class Conexion {
     public void setCnCoi(Connection cnCoi) {
         this.cnCoi = cnCoi;
     }
+
+    public Connection getCnPol() {
+        return cnPol;
+    }
+
+    public void setCnPol(Connection cnPol) {
+        this.cnPol = cnPol;
+    }
+    
+    
 
     public void ConectarSae() {
         try {
@@ -58,6 +69,25 @@ public class Conexion {
             if ((this.cnCoi != null)
                     && (!this.cnCoi.isClosed())) {
                 this.cnCoi.close();
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+    public void ConectarPolizas() {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            this.cnPol = DriverManager.getConnection(Configuracion.getConexDBPolizas(), Configuracion.getConexUser(), Configuracion.getConexPwd());
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void CerrarPolizas() throws SQLException {
+        try {
+            if ((this.cnPol != null)
+                    && (!this.cnPol.isClosed())) {
+                this.cnPol.close();
             }
         } catch (SQLException e) {
             throw e;

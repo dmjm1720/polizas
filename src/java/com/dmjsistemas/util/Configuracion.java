@@ -11,6 +11,7 @@ public class Configuracion {
 
     private static final String conexDBSae = "jdbc:sqlserver://localhost;databaseName=SAE90Empre01";
     private static final String conexDBCoi = "jdbc:sqlserver://localhost;databaseName=COI10EMPRE1";
+    private static final String conexDBPolizas = "jdbc:sqlserver://localhost;databaseName=polizas";
     private static final String conexUser = "sa";
     private static final String conexPwd = "Pr4xi5A5a*";
   
@@ -32,5 +33,11 @@ public class Configuracion {
     public static String getConexPwd() {
         return conexPwd;
     }
+
+    public static String getConexDBPolizas() {
+        return conexDBPolizas;
+    }
+    
+    
 
 }

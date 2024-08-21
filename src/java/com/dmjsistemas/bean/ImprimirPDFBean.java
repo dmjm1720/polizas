@@ -16,7 +16,6 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -24,7 +23,6 @@ import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
-import org.primefaces.PrimeFaces;
 
 @Named(value = "imprimir")
 @ViewScoped
