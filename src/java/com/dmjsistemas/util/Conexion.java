@@ -77,7 +77,7 @@ public class Conexion {
     public void ConectarPolizas() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            this.cnPol = DriverManager.getConnection(Configuracion.getConexDBPolizas(), Configuracion.getConexUser(), Configuracion.getConexPwd());
+            this.cnPol = DriverManager.getConnection(Configuracion.getConexDBPolizas(), Configuracion.getConexUser(), Configuracion.getConexPwd1());
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println(e.getMessage());
         }

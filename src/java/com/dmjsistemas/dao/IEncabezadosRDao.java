@@ -14,6 +14,8 @@ public interface IEncabezadosRDao {
        
        public List<EncabezadosRecepcion> obtenerInfoEncabezadosRecepcion(String fec1, String fec2, String rfc) throws SQLException;
        
+       public List<EncabezadosRecepcion> obtenerInfoEncabezadosRecepcionXF(String factura) throws SQLException;
+       
        public String  obtenerInfoOBS(String cveOBS) throws SQLException;
        
        public List<EncabezadosRecepcion> listaFRP(String factura);

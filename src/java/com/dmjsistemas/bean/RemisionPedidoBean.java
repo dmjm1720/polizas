@@ -14,7 +14,6 @@ import com.dmjsistemas.util.Conexion;
 import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
-import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,11 +21,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -34,12 +29,6 @@ import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperExportManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.util.JRLoader;
 import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import org.bolivia.qulqi.Qulqi;
@@ -378,8 +367,11 @@ public class RemisionPedidoBean extends Conexion implements Serializable {
     public List<String> completeRFC(String rfc) throws SQLException {
         List<String> resultRFC = new ArrayList<>();
         List<String> listarTodo = new ArrayList<>();
-        ConectarPolizas();
-        PreparedStatement st = getCnPol().prepareStatement("SELECT DISTINCT (RFC) FROM ENCABEZADOS_RECEPCION WHERE  RFC LIKE '" + rfc + "%'");
+        //ConectarPolizas();
+
+        ConectarSae();
+        
+        PreparedStatement st = getCnSae().prepareStatement("SELECT DISTINCT (RFC) FROM CLIE01 WHERE  RFC LIKE '" + rfc + "%'");
         ResultSet rs = st.executeQuery();
         listarTodo = new ArrayList<>();
         if (!rs.isBeforeFirst()) {
@@ -393,8 +385,9 @@ public class RemisionPedidoBean extends Conexion implements Serializable {
             resultRFC.add(listarTodo.get(i));
         }
 
-        CerrarPolizas();
+        CerrarSae();
         return resultRFC;
     }
 
+    
 }

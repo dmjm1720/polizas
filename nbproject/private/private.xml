@@ -4,8 +4,18 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/aigm/Documentos/GitHub/polizas/src/java/com/dmjsistemas/bean/RemisionPedidoBean.java</file>
+            <file>file:/home/aigm/Documentos/GitHub/polizas/src/java/com/dmjsistemas/bean/RemisionPedidoFacturasBean.java</file>
+            <file>file:/home/aigm/Documentos/GitHub/polizas/web/template/Template.xhtml</file>
+            <file>file:/home/aigm/Documentos/GitHub/polizas/web/template/Template2.xhtml</file>
+            <file>file:/home/aigm/Documentos/GitHub/polizas/web/resources/css/login.css</file>
+            <file>file:/home/aigm/Documentos/GitHub/polizas/web/resources/css/default2.css</file>
+            <file>file:/home/aigm/Documentos/GitHub/polizas/src/java/com/dmjsistemas/util/Conexion.java</file>
+            <file>file:/home/aigm/Documentos/GitHub/polizas/src/java/com/dmjsistemas/util/Configuracion.java</file>
+            <file>file:/home/aigm/Documentos/GitHub/polizas/web/views/RemPed.xhtml</file>
             <file>file:/home/aigm/Documentos/GitHub/polizas/src/java/com/dmjsistemas/impl/EncabezadoRecepcionImpl.java</file>
+            <file>file:/home/aigm/Documentos/GitHub/polizas/web/index.xhtml</file>
             <file>file:/home/aigm/Documentos/GitHub/polizas/src/java/com/dmjsistemas/impl/PartidasRDaoImpl.java</file>
+            <file>file:/home/aigm/Documentos/GitHub/polizas/src/java/hibernate.cfg.xml</file>
             <file>file:/home/aigm/Documentos/GitHub/polizas/src/java/com/dmjsistemas/dao/IEncabezadosRDao.java</file>
         </group>
     </open-files>

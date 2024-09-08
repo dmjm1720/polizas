@@ -78,7 +78,8 @@ public class EncabezadoRecepcionImpl extends Conexion implements IEncabezadosRDa
                 + "CUEN_DET01 CT ON F.CVE_DOC = CT.NO_FACTURA "
                 + "INNER JOIN "
                 + "CLIE01 C ON F.CVE_CLPV = C.CLAVE "
-                + "WHERE F.STATUS <> 'C' AND CT.REF_SIST='B'  AND CT.FECHA_APLI BETWEEN '" + fec1 + "' AND '" + fec2 + "' AND F.RFC='" + rfc + "'");
+              + "WHERE F.STATUS <> 'C' AND CT.REF_SIST='B'  AND CT.FECHA_APLI BETWEEN '" + fec1 + "' AND '" + fec2 + "' AND F.RFC='" + rfc + "'");
+                      //  + "WHERE F.STATUS <> 'C' AND CT.REF_SIST='B'  AND CT.FECHA_APLI BETWEEN '" + fec1 + "' AND '" + fec2 + "'");
 
         if (!rs.isBeforeFirst()) {
 
@@ -304,6 +305,56 @@ public class EncabezadoRecepcionImpl extends Conexion implements IEncabezadosRDa
             Logger.getLogger(EncabezadoRecepcionImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return listaFRP;
+    }
+
+    @Override
+    public List<EncabezadosRecepcion> obtenerInfoEncabezadosRecepcionXF(String factura) throws SQLException {
+          List<EncabezadosRecepcion> listaValidacionFacturaR = new ArrayList<>();
+        EncabezadosRecepcion er = new EncabezadosRecepcion();
+
+        ConectarSae();
+        Statement st = getCnSae().createStatement();
+        ResultSet rs = st.executeQuery("SELECT F.CVE_DOC, F.DOC_ANT, F.CVE_CLPV, CT.FECHA_APLI, F.CAN_TOT, F.RFC, "
+                + "C.NOMBRE, C.CALLE, C.COLONIA, C.ESTADO, C.CODIGO, C.TELEFONO, C.CVE_OBS, C.NUMEXT, C.LOCALIDAD, C.MUNICIPIO "
+                + "FROM FACTF01 F "
+                + "INNER JOIN "
+                + "CUEN_DET01 CT ON F.CVE_DOC = CT.NO_FACTURA "
+                + "INNER JOIN "
+                + "CLIE01 C ON F.CVE_CLPV = C.CLAVE "
+                + "WHERE F.STATUS <> 'C' AND CT.REF_SIST='B' AND CT.NO_FACTURA = '"+ factura +"'");
+
+        if (!rs.isBeforeFirst()) {
+
+        } else {
+            int num = 1;
+            while (rs.next()) {
+
+                System.out.println("FACTURAS ENCONTRADAS:" + num + " " + rs.getString(1));
+                er.setCveDoc(rs.getString("CVE_DOC"));
+                er.setDocAnt(rs.getString("DOC_ANT"));
+                er.setCveClpv(rs.getString("CVE_CLPV"));
+                er.setFechaApli(rs.getDate("FECHA_APLI"));
+                er.setCanTot(rs.getDouble("CAN_TOT"));
+                er.setRfc(rs.getString("RFC"));
+                er.setNombre(rs.getString("NOMBRE"));
+                er.setCalle(rs.getString("CALLE"));
+                er.setColonia(rs.getString("COLONIA"));
+                er.setEstado(rs.getString("ESTADO"));
+                er.setCodigo(rs.getString("CODIGO"));
+                er.setTelefono(rs.getString("TELEFONO"));
+                er.setStrObs(rs.getString("CVE_OBS"));
+                er.setNumext(rs.getString("NUMEXT"));
+                er.setLocalidad(rs.getString("LOCALIDAD"));
+                er.setMunicipio(rs.getString("MUNICIPIO"));
+
+                listaValidacionFacturaR.add(er);
+                er = new EncabezadosRecepcion();
+                num++;
+            }
+        }
+
+        CerrarSae();
+        return listaValidacionFacturaR;
     }
 
 }

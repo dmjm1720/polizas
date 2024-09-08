@@ -10,7 +10,7 @@
 
     </h:head>
     <h:body>
-        <ui:composition template="/template/Template.xhtml">
+        <ui:composition template="/template/Template2.xhtml">
 
             <ui:define name="content">
 
@@ -28,28 +28,28 @@
                              skipDetailIfEqualsSummary="true" />
                     <p:spacer height="30"/>
                     <div style="text-align: center">
-                        <p:badge value="MÓDULO DE IMPRESIÓN PDF'S FACTURA➤REMISIÓN➤PEDIDO POR FECHA" style="font-size: 22px !important"  styleClass="etiqueta" />
+                        <p:badge value="MÓDULO DE IMPRESIÓN PDF'S FACTURA➤REMISIÓN➤PEDIDO POR FECHA" style="font-size: 22px !important"  styleClass="pink6 etiqueta" />
                     </div>
                     <p:divider></p:divider>
                     <p:panelGrid columns="10"  layout="grid">
 
-                        <p:badge value="FECHA DE COBRANZA INICIAL" styleClass="pear" />
+                        <p:badge value="FECHA DE COBRANZA INICIAL" styleClass="pink3" />
                         <p:datePicker id="f1" value="#{remisionPedidoBean.fec1}" 
                                       pattern="yyyy-MM-dd" showIcon="true">
                         </p:datePicker>
-                        <p:badge value="FECHA DE COBRANZA FINAL" styleClass="pear" />
+                        <p:badge value="FECHA DE COBRANZA FINAL" styleClass="pink3" />
                         <p:datePicker id="f2" value="#{remisionPedidoBean.fec2}"
                                       pattern="yyyy-MM-dd" showIcon="true">
                         </p:datePicker>
 
-                         <p:badge value="RFC DELCLIENTE" styleClass="pear" />
+                         <p:badge value="RFC DELCLIENTE" styleClass="pink3" />
                         <p:autoComplete id="byRFC" size="40" placeholder="Ingresa p. ej AA o ZZ" 
                                             dropdown="true" value="#{remisionPedidoBean.filterRFC}" 
                                             completeMethod="#{remisionPedidoBean.completeRFC}"/>  
 
                         <p:commandButton id="btnBuscar" value="GENERAR DOCUMENTOS" 
                                          icon="pi pi-sync" 
-                                         styleClass="etiqueta"
+                                         styleClass="etiqueta pink3"
                                          update="frmPrincipal"
                                          actionListener="#{remisionPedidoBean.insertarInformacion()}"
                                          />
@@ -57,7 +57,7 @@
 
                         <p:commandButton id="btnVerPDF" value="VISUALIZAR DOCUMENTOS" 
                                          icon="pi pi-clone" 
-                                         styleClass="cerrar" onclick="PF('dlg1').show()"
+                                         styleClass="pink4" onclick="PF('dlg1').show()"
                                          />
 
                                          
@@ -80,26 +80,26 @@
                     <p:spacer height="80"/>
                     <p:divider/>
                       <div style="text-align: center">
-                        <p:badge value="MÓDULO DE IMPRESIÓN PDF'S FACTURA➤REMISIÓN➤PEDIDO POR FACTURA" style="font-size: 22px !important"  styleClass="etiqueta" />
+                        <p:badge value="MÓDULO DE IMPRESIÓN PDF'S FACTURA➤REMISIÓN➤PEDIDO POR FACTURA" style="font-size: 22px !important"  styleClass="pink6 etiqueta" />
                     </div>
                     
                     <p:panelGrid columns="10"  layout="grid">
 
-                        <p:badge value="NO FACTURA" styleClass="pear" />
-                        <p:inputText id="doc" value="Hola"/>
+                        <p:badge value="NO FACTURA" styleClass="pink3" />
+                        <p:inputText id="doc" value="#{remisionPedidoFacturaBean.factura}"/>
 
 
                         <p:commandButton id="btnBuscarDoc" value="GENERAR DOCUMENTOS" 
                                          icon="pi pi-sync" 
-                                         styleClass="etiqueta"
+                                         styleClass="pink3"
                                          update="frmPrincipal"
-                                         actionListener="#{remisionPedidoBean.insertarInformacion()}"
+                                         actionListener="#{remisionPedidoFacturaBean.insertarInformacion()}"
                                          />
 
 
                         <p:commandButton id="btnVerDocPDF" value="VISUALIZAR DOCUMENTOS" 
                                          icon="pi pi-clone" 
-                                         styleClass="cerrar" onclick="PF('dlg1').show()"
+                                         styleClass="pink4" onclick="PF('dlg2').show()"
                                          />
 
                                          
@@ -111,9 +111,9 @@
                                    showEffect="fade" 
                                    closeOnEscape="true">
 
-                            <p:media value="#{imprimir.tmpRuta.rutaTemp}" width="100%" height="100%">
+                            <p:media value="#{remisionPedidoFacturaBean.tmpRutaXF.rutaTemp}" width="100%" height="100%">
                                 Your browser can't display pdf, <h:outputLink
-                                    value="#{request.contextPath}#{imprimir.tmpRuta.rutaTemp}">click</h:outputLink> to download pdf instead.
+                                    value="#{request.contextPath}#{remisionPedidoFacturaBean.tmpRutaXF.rutaTemp}">click</h:outputLink> to download pdf instead.
                             </p:media> 
                         </p:dialog>
 
